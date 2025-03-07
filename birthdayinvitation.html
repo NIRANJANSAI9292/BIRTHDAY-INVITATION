@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Invitation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background: url('image.png') no-repeat center center/cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            position: relative;
+            z-index: 10;
+        }
+        h1 {
+            color: #ff4081;
+        }
+        p, h2 {
+            color: blue;
+        }
+
+        /* Balloons Floating */
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 70px;
+            background-color: red;
+            border-radius: 50%;
+            animation: floatBalloon 6s linear infinite;
+        }
+        .balloon:nth-child(2) { left: 20%; background-color: blue; animation-delay: 2s; }
+        .balloon:nth-child(3) { left: 40%; background-color: yellow; animation-delay: 4s; }
+        .balloon:nth-child(4) { left: 60%; background-color: green; animation-delay: 1s; }
+        .balloon:nth-child(5) { left: 80%; background-color: pink; animation-delay: 3s; }
+
+        @keyframes floatBalloon {
+            0% { bottom: -100px; opacity: 0; }
+            50% { opacity: 1; }
+            100% { bottom: 110%; opacity: 0; }
+        }
+
+        /* Confetti Falling */
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: yellow;
+            top: -10px;
+            opacity: 0.8;
+            animation: fallConfetti 3s linear infinite;
+        }
+        .confetti:nth-child(odd) { background-color: red; }
+        .confetti:nth-child(even) { background-color: blue; }
+        @keyframes fallConfetti {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🎉 You're Invited! 🎉</h1>
+        <p>Join us to celebrate</p>
+        <h2>🎂 Niranjan's Birthday! 🎂</h2>
+        <p><strong>Date:</strong> [04-08-2025]</p>
+        <p><strong>Time:</strong> [07:00 PM]</p>
+        <p><strong>Venue:</strong> [Vijayawada]</p>
+        <p>We can't wait to celebrate with you!</p>
+    </div>
+
+    <!-- Balloons -->
+    <div class="balloon" style="left: 10%;"></div>
+    <div class="balloon" style="left: 30%;"></div>
+    <div class="balloon" style="left: 50%;"></div>
+    <div class="balloon" style="left: 70%;"></div>
+    <div class="balloon" style="left: 90%;"></div>
+
+    <!-- Confetti -->
+    <script>
+        function createConfetti() {
+            const confettiCount = 50;
+            for (let i = 0; i < confettiCount; i++) {
+                let confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+                confetti.style.animationDelay = Math.random() * 3 + "s";
+                document.body.appendChild(confetti);
+            }
+        }
+        createConfetti();
+    </script>
+</body>
+</html>
